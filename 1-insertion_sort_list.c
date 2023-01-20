@@ -8,20 +8,19 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *node, *next;
+	listint_t *node, *prev;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
 	for (node = (*list)->next; node != NULL; node = node->next)
 	{
-		for (next = node->next; next != NULL; next = next->next)
+		for (;node->prev && node->n < node->prev->n; node = node->prev)
 		{
-			if (node->n > next->n)
-			{
-				swap(node, next, list);
-				print_list(*list);
-			}
+			prev = node->prev;
+			swap(prev, node, list);
+			print_list(*list);
+			node = node->next;
 		}
 	}
 }
