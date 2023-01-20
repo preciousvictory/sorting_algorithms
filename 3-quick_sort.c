@@ -19,7 +19,8 @@ void quick_sort(int *array, size_t size)
 
 /**
  * q_sort - sort array using quick sort
- * @array: the array to be sorted
+ * @array: the array to be sortedi
+ * @size: size of array
  * @low: lower point
  * @high: pivot
  */
@@ -29,7 +30,7 @@ void q_sort(int *array, size_t size, int low, int high)
 
 	if (low >= high)
 		return;
-	
+
 	if (low < high)
 	{
 		pivot = partition(array, size, low, high);
@@ -37,7 +38,7 @@ void q_sort(int *array, size_t size, int low, int high)
 		 * sorts to the left of the pivot
 		 */
 		q_sort(array, size, low, pivot - 1);
-	
+
 		/**
 		 * sorts to the right of the pivot
 		 */
@@ -45,6 +46,15 @@ void q_sort(int *array, size_t size, int low, int high)
 	}
 }
 
+/**
+ * partition - lomuto partition scheme
+ * @array: array ro be sorted
+ * @size: size of array
+ * @low: first value
+ * @high: last value
+ *
+ * Return: index
+ */
 int partition(int *array, size_t size, int low, int high)
 {
 	int i, j;
@@ -69,7 +79,7 @@ int partition(int *array, size_t size, int low, int high)
 			}
 		}
 	}
-	
+
 	/**
 	 * i after the loop end becomes the pivot correct position
 	 * swapping arr[i] and pivot to pivot in it correct position
@@ -89,7 +99,6 @@ int partition(int *array, size_t size, int low, int high)
  * swap_index - swap to index value in an arry
  * @i: first index
  * @j: second index
- * @array: array to be swapped
  */
 void swap_index(int i, int j)
 {
