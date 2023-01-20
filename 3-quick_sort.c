@@ -23,7 +23,7 @@ void quick_sort(int *array, size_t size)
  * @low: lower point
  * @high: pivot
  */
-void q_sort(int *array, size_t size, size_t low, size_t high)
+void q_sort(int *array, size_t size, int low, int high)
 {
 	int pivot;
 
@@ -45,17 +45,17 @@ void q_sort(int *array, size_t size, size_t low, size_t high)
 	}
 }
 
-size_t partition(int *array, size_t size, size_t low, size_t high)
+int partition(int *array, size_t size, int low, int high)
 {
-	size_t i, j;
-	int pivot = array[high], temp;
+	int i, j;
+	int pivot = array[high], temp = 0;
 
 	/**
 	 * Lomuto partition scheme
 	 * this scheme chooses as the pivot the last element in the array.
 	 */
 	i = low - 1;
-	for (j = low; j < high; j++)
+	for (j = low; j <= high - 1; j++)
 	{
 		if (array[j] < pivot)
 		{
@@ -74,7 +74,7 @@ size_t partition(int *array, size_t size, size_t low, size_t high)
 	 * i after the loop end becomes the pivot correct position
 	 * swapping arr[i] and pivot to pivot in it correct position
 	 */
-	if (array[i + 1] != array[high])
+	if (array[i + 1] > array[high])
 	{
 		temp = array[i + 1];
 		array[i + 1] = array[high];
